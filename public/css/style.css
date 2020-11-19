@@ -1,0 +1,19 @@
+table {
+    width: 100%;
+}
+h1{
+    margin-bottom: 3rem;
+}
+hr {
+    border-width: thick;
+    border-color: black;
+}
+#del{
+    margin-right: 10rem;
+}
+footer{
+    background-color: black;
+    color: white;
+    text-align: center;
+    margin-top: 5rem;
+}
