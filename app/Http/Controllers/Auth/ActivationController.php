@@ -14,6 +14,8 @@ class ActivationController extends Controller
         $user->update([
             'activation_token' => null,
             'email_verified_at' => Carbon::now(),
+            'is_active' =>'1',
+            'is_verified' =>'1',
         ]);
         return redirect()->route('login');
     }

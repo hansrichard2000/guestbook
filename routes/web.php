@@ -2,6 +2,7 @@
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\User\UserController as UUserController;
 use App\Http\Controllers\Auth\ActivationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -21,8 +22,32 @@ Route::get('/', function(){
     return redirect()->route('event.index');
 });
 Route::get('activate', [ActivationController::class, 'activate'])->name('activate');
+
 Route::resource('event', EventController::class);
 Route::resource('user', UserController::class);
+Route::group([
+    'middleware' => 'admin',
+    'prefix' =>'admin',
+    'as' => 'admin.',
+], function() {
+    Route::resource('user', UserController::class);
+    Route::resource('event', EventController::class);
+});
+
+// Route::group([
+//     'middleware' => 'creator',
+//     'as' => 'creator',
+// ], function() {
+//     Route::resource('creator/event', EventController::class);
+// });
+
+Route::group([
+    'middleware' => 'user',
+    'prefix' => 'user',
+    'as' => 'user.'
+], function() {
+    Route::resource('user', UUserController::class);
+});
 // Route::get('/', [EventController::class, 'index']);
 // Route::get('/add', [EventController::class, 'create'])->name('addevent');
 // Route::post('/store', [EventController::class, 'store'])->name('event_store');

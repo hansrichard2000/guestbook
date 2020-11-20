@@ -4,7 +4,10 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
+use \App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -37,4 +40,67 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    public function login(Request $request)
+    {
+        $admin = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 1,
+            'is_login' => '0',
+            'is_active' => '1',
+            'is_verified' => '1',
+        ];
+
+        $creator = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 2,
+            'is_login' => '0',
+            'is_active' => '1',
+            'is_verified' => '1',
+        ];
+
+        $user = [
+            'email' => $request->email,
+            'password' => $request->password,
+            'role_id' => 3,
+            'is_login' => '0',
+            'is_active' => '1',
+            'is_verified' => '1',
+        ];
+
+        if (Auth::attempt($admin)){
+            $this->isLogin(Auth::id());
+            return redirect()->route('admin.event.index');
+        }else if (Auth::attempt($creator)){
+            $this->isLogin(Auth::id());
+            return redirect()->route('creator.event.index');
+        }else if (Auth::attempt($user)){
+            $this->isLogin(Auth::id());
+            return redirect()->route('user.event.index');
+        }
+
+        return redirect()->route('login');
+
+    }
+
+    public function logout(Request $request)
+    {
+        $user = User::findOrFail(Auth::id());
+        $user->update([
+            'is_login' => '0',
+        ]);
+
+        $request->session()->invalidate();
+        return $this->loggedOut($request) ?: redirect('login');
+    }
+
+    private function isLogin(int $id){
+        $user = User::findOrFail($id);
+        return $user->update([
+            'is_login' => '1',
+        ]);
+    }
+
 }

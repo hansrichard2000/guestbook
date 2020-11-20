@@ -24,6 +24,6 @@ class Creator
             }
         }
 
-        return redirect('/')->with('error', 'Can\'t access');
+        return redirect('/event')->with('error', 'Can\'t access');
     }
 }

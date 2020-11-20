@@ -23,6 +23,8 @@ class User extends Authenticatable
         'password',
         'role_id',
         'is_login',
+        'is_active',
+        'is_verified',
         'activation_token',
     ];
 
@@ -54,21 +56,21 @@ class User extends Authenticatable
     }
 
     public function isAdmin(){
-        if ($this->role->name == 'Admin' && $this->is_login == '1'){
+        if ($this->role->name == 'Admin' && $this->is_login == '1' && $this->is_active =='1' && $this->is_verified == '1'){
             return true;
         }
         return false;
     }
 
     public function isCreator(){
-        if ($this->role->name == 'Creator' && $this->is_login == '1'){
+        if ($this->role->name == 'Creator' && $this->is_login == '1' && $this->is_active =='1' && $this->is_verified == '1'){
             return true;
         }
         return false;
     }
 
     public function isUser(){
-        if ($this->role->name == 'User' && $this->is_login == '1'){
+        if ($this->role->name == 'User' && $this->is_login == '1' && $this->is_active =='1' && $this->is_verified == '1'){
             return true;
         }
         return false;
