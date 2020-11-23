@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\User\GuestController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\User\UserController as UUserController;
 use App\Http\Controllers\Auth\ActivationController;
@@ -24,7 +25,7 @@ Route::get('/', function(){
 Route::get('activate', [ActivationController::class, 'activate'])->name('activate');
 
 Route::resource('event', EventController::class);
-Route::resource('user', UserController::class);
+//Route::resource('user', UserController::class);
 Route::group([
     'middleware' => 'admin',
     'prefix' =>'admin',
@@ -34,19 +35,20 @@ Route::group([
     Route::resource('event', EventController::class);
 });
 
-// Route::group([
-//     'middleware' => 'creator',
-//     'as' => 'creator',
-// ], function() {
-//     Route::resource('creator/event', EventController::class);
-// });
+ Route::group([
+     'middleware' => 'creator',
+     'prefix' => 'creator',
+     'as' => 'creator',
+ ], function() {
+     Route::resource('event', EventController::class);
+ });
 
 Route::group([
     'middleware' => 'user',
     'prefix' => 'user',
     'as' => 'user.'
 ], function() {
-    Route::resource('user', UUserController::class);
+    Route::resource('user', GuestController::class);
 });
 // Route::get('/', [EventController::class, 'index']);
 // Route::get('/add', [EventController::class, 'create'])->name('addevent');
@@ -66,4 +68,4 @@ Route::resource('student', StudentController::class);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
