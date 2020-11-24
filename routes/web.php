@@ -25,7 +25,7 @@ Route::get('/', function(){
 Route::get('activate', [ActivationController::class, 'activate'])->name('activate');
 
 Route::resource('event', EventController::class);
-//Route::resource('user', UserController::class);
+Route::resource('user', UserController::class);
 Route::group([
     'middleware' => 'admin',
     'prefix' =>'admin',
@@ -67,5 +67,7 @@ Route::group([
 Route::resource('student', StudentController::class);
 
 Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 

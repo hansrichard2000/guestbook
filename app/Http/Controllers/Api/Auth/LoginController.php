@@ -25,7 +25,7 @@ class LoginController extends Controller
         $user = [
             'email' => $request->email,
             'password' => $request->password,
-            'role_id' => 3,
+            'role_id' => 2,
             'is_login' => '0',
             'is_active' => '1',
             'is_verified' => '1',
@@ -40,7 +40,7 @@ class LoginController extends Controller
                     if (Auth::attempt($user)){
                         $this->isLogin(Auth::id());
                         $response = $http->post('http://127.0.0.1:8000/oauth/token', [
-                            'form-params' => [
+                            'form_params' => [
                                 'grant_type' => 'password',
                                 'client_id' => $this->client->id,
                                 'client_secret' => $this->client->secret,
