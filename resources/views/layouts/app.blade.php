@@ -46,7 +46,7 @@
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="/admin/creator">Creator List</a>
                                         <a class="dropdown-item" href="/admin/user">Guest List</a>
-                                        <a class="dropdown-item" href="{{route('admin.user.create')}}">Add User</a>
+                                        <a class="dropdown-item" href="{{route('admin.creator.create')}}">Add User</a>
                                     </div>
                                 </div>
                             @endif

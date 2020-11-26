@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\EventController as AdminEventController;
+use App\Http\Controllers\Auth\AddUserController;
 use App\Http\Controllers\CreatorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\StudentController;
@@ -33,14 +34,17 @@ Route::group([
     'prefix' =>'admin',
     'as' => 'admin.',
 ], function() {
+//    Route::post('adduser', [AddUserController::class, 'addUser'])->name('adduser');
     Route::resource('creator', CreatorController::class);
     Route::resource('user', UserController::class);
-    Route::resource('event', AdminEventController::class);
+    Route::resource('event', EventController::class);
+//    Route::resource('event', AdminEventController::class);
 });
 
  Route::group([
      'middleware' => 'creator',
      'prefix' => 'creator',
+     'as' => 'creator.',
  ], function() {
      Route::resource('event', EventController::class);
  });
