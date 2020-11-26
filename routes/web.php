@@ -1,9 +1,11 @@
 <?php
+
+use App\Http\Controllers\Admin\EventController as AdminEventController;
+use App\Http\Controllers\CreatorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\User\GuestController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\User\UserController as UUserController;
+use App\Http\Controllers\User\GuestController as UUserController;
 use App\Http\Controllers\Auth\ActivationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -25,20 +27,20 @@ Route::get('/', function(){
 Route::get('activate', [ActivationController::class, 'activate'])->name('activate');
 
 Route::resource('event', EventController::class);
-Route::resource('user', UserController::class);
+//Route::resource('user', UserController::class);
 Route::group([
     'middleware' => 'admin',
     'prefix' =>'admin',
     'as' => 'admin.',
 ], function() {
+    Route::resource('creator', CreatorController::class);
     Route::resource('user', UserController::class);
-    Route::resource('event', EventController::class);
+    Route::resource('event', AdminEventController::class);
 });
 
  Route::group([
      'middleware' => 'creator',
      'prefix' => 'creator',
-     'as' => 'creator',
  ], function() {
      Route::resource('event', EventController::class);
  });
@@ -48,7 +50,7 @@ Route::group([
     'prefix' => 'user',
     'as' => 'user.'
 ], function() {
-    Route::resource('user', GuestController::class);
+    Route::resource('user', UUserController::class);
 });
 // Route::get('/', [EventController::class, 'index']);
 // Route::get('/add', [EventController::class, 'create'])->name('addevent');

@@ -90,7 +90,7 @@ class RegisterController extends Controller
 
         event(new ActivationEvent($user));
         // Mail::to($user->email)->send(new ActivationMail($user));
-        return redirect('login')->with('Success', "Regsitartion complete, please verify your email");
+        return redirect('login')->with('Success', "Registration complete, please verify your email");
 
     }
 }

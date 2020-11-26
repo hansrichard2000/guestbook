@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="stylesheet" type="text/css" href="{!! asset('/css/style.css') !!}">
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -18,13 +20,14 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Hans EO') }}
+                    Guestbook
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -36,7 +39,16 @@
                     <a class="nav-link" href="/event">Event List <span class="sr-only">(current)</span></a>
                         @auth
                             @if (\illuminate\Support\Facades\Auth::user()->isAdmin())
-                                <a class="nav-link" href="/user">User List</a>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        User Management
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="/admin/creator">Creator List</a>
+                                        <a class="dropdown-item" href="/admin/user">Guest List</a>
+                                        <a class="dropdown-item" href="{{route('admin.user.create')}}">Add User</a>
+                                    </div>
+                                </div>
                             @endif
                         @endauth
                         <a class="nav-link" href="#">Pricing</a>

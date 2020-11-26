@@ -1,37 +1,7 @@
-<html>
-    <head>
-        <title>Welcome Aboard</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{!! asset('/css/style.css') !!}">
-    </head>
-    <body class="container mt-5">
-        <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-            <a class="navbar-brand" href="/">Hans EO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <div class="navbar-nav">
-                <a class="nav-link" href="/event">Event List <span class="sr-only">(current)</span></a>
-                <a class="nav-link active" href="/user">User List</a>
-                <a class="nav-link" href="#">Pricing</a>
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-              </div>
-            </div>
-          </nav>
-        <br>
-        <h1>List Users</h1>
-        <form method="GET" action="{{route('event.create')}}">
-        <button class="btn btn-primary float-right mt-n5 mr-lg-5" href="{{route('event.create')}}">
-                Tambah
-            </button>
-        </form>
+@extends('layouts.app')
 
-        <form method="POST" action="{{route('event.create')}}">
-            <button id="del" class="btn btn-danger mt-n5 float-right" href="delete.php">
-                Hapus
-            </button>
-        </form>
+@section('content')
+        <h1>List Guest</h1>
         <hr>
         <table class="table table-striped">
             <thead class="thead-dark">
@@ -39,24 +9,42 @@
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Event List</th>
+                <th scope="col">Login Status</th>
+                <th scope="col">Account Status</th>
             </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
-                <tr>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>
-                        @foreach ($user->events as $event)
-                        {{ $event->title }}
-                        @endforeach
-                    </td>
-                </tr>
+                    @if($user->role_id == 3)
+                        <tr>
+                            <td>{{$user->name}}</td>
+                            <td>{{$user->email}}</td>
+                            <td>
+                                @foreach ($user->events as $event)
+                                {{ $event->title }}
+                                @endforeach
+                            </td>
+                            <td>
+                                @if($user->is_login == 0)
+                                    <p class="text-danger">Logged Out</p>
+                                @elseif($user->is_login == 1)
+                                    <p class="text-success">Logged In</p>
+                                @endif
+                            </td>
+                            <td>
+                                @if($user->is_verified == 0)
+                                    <p class="text-danger">Disabled</p>
+                                @elseif($user->is_verified == 1)
+                                    <p class="text-success">Enabled</p>
+                                @endif
+                            </td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
+
         </table>
         <footer>
             Copyleft 2020 Hans Richard Alim Natadjaja
         </footer>
-    </body>
-</html>
+@endsection

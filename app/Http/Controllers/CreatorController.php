@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class CreatorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +17,8 @@ class UserController extends Controller
     {
         $pages = 'user';
         $users = User::all();
-        return view('user.index', compact('pages', 'users'));
+        $events = Event::all();
+        return view('user.creator.index', compact('pages', 'users', 'events'));
     }
 
     /**
@@ -26,7 +28,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('user.create');
+        //
     }
 
     /**

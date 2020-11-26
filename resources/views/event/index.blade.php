@@ -8,11 +8,6 @@
     </button>
     </form>
 
-    <form method="POST" action="{{route('event.create')}}">
-        <button id="del" class="btn btn-danger mt-n5 float-right" href="delete.php">
-            Hapus
-        </button>
-    </form>
     @endauth
     <hr>
     <table class="table table-striped">
