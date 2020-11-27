@@ -20,22 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="454972a8-c6a2-4d99-b40f-8d2be7cafcea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/User/MyEventController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/images.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/event/detailEvent.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/eventuser/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/myevent/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/usernav.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/GuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/GuestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/addEvent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/addEvent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/editEvent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/editEvent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +180,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../motogp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mansun" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -236,7 +221,8 @@
       <workItem from="1606273370643" duration="12345000" />
       <workItem from="1606388857927" duration="68000" />
       <workItem from="1606388991008" duration="5434000" />
-      <workItem from="1606436776042" duration="11447000" />
+      <workItem from="1606436776042" duration="11701000" />
+      <workItem from="1606489690070" duration="540000" />
     </task>
     <servers />
   </component>
@@ -279,10 +265,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="161" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1606132094153" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606439760837">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606489698245">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606439760837" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606489698245" />
     <state x="349" y="147" key="IDE.errors.dialog" timestamp="1606135502169">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
