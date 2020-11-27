@@ -27,6 +27,13 @@
         <label for="event_date">Event Date : </label>
         <input type="date" class="form-control" id="event_date" name="event_date">
     </div>
+    <div class="form-group">
+        <label for="status">Status : </label>
+        <select name="status" class="custom-select">
+            <option value="0">Close</option>
+            <option value="1">Open</option>
+        </select>
+    </div>
     <input class="btn btn-primary" type="submit" id="submit" name="submit" value="Submit">
 </form>
 <footer>

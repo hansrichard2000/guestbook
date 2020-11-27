@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                    <a class="nav-link" href="/event">Event List <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/event">Event List <span class="sr-only">(current)</span></a>
                         @auth
                             @if (\illuminate\Support\Facades\Auth::user()->isAdmin())
                                 <div class="btn-group">

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
-class GuestController extends Controller
+class MyEventController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class GuestController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view('guest.eventuser.index', compact('events'));
+        return view('guest.myevent.index', compact('events'));
     }
 
     /**

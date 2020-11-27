@@ -2,43 +2,62 @@
 @section('content')
     <h1>List Event</h1>
     @auth
-    <form method="GET" action="{{route('event.create')}}">
-    <button class="btn btn-primary float-right mt-n5 mr-lg-5" href="{{route('event.create')}}">
-            Tambah
-    </button>
-    </form>
-
+        @if(\illuminate\Support\Facades\Auth::user()->isAdmin() || \illuminate\Support\Facades\Auth::user()->isCreator())
+            <form method="GET" action="{{route('event.create')}}">
+            <button class="btn btn-primary float-right mt-n5 mr-lg-5" href="{{route('event.create')}}">
+                    Tambah
+            </button>
+            </form>
+        @endif
     @endauth
     <hr>
     <table class="table table-striped">
-        <thead class="thead-dark">
+        <thead class="thead-dark text-center">
         <tr>
+            <th scope="col">Event Id</th>
             <th scope="col">Judul</th>
             <th scope="col">Deskripsi</th>
             <th scope="col">Tanggal Acara</th>
-            <th scope="col">Owned by</th>
-            <th scope="col">Created at</th>
-            <th scope="col">Updated at</th>
+            <th scope="col">Created by</th>
+            <th scope="col">Total Attendant</th>
+            <th scope="col">Event Status</th>
             <th scope="col">Action</th>
         </tr>
         </thead>
         <tbody>
             @foreach ($events as $event)
             <tr>
-                <td><a href="@auth{{route('event.edit', $event)}}@endauth">{{$event->title}}</a></td>
+                <td>{{$event->id}}</td>
+                <td><a href="@auth/event/{{$event->id}}@endauth">{{$event->title}}</a></td>
                 <td>{{$event->description}}</td>
                 <td>{{$event->event_date}}</td>
                 <td>{{$event->creator->name}}</td>
-                <td>{{$event->created_at}}</td>
-                <td>{{$event->updated_at}}</td>
-                @auth
+                <td>{{$event->noa}}</td>
                 <td>
-                    <form action="{{route('event.destroy', $event)}}" method="post">
-                    @csrf
-                        <input type="hidden" name="_method" value="DELETE">
-                        <button type="submit" class="btn btn-danger">Hapus</button>
-                   </form>
+                    @if($event->status == 0)
+                        <p class="text-danger">Close</p>
+                    @elseif($event->status == 1)
+                        <p class="text-success">Open</p>
+                    @endif
                 </td>
+                @auth
+                    @if(\illuminate\Support\Facades\Auth::user()->isAdmin() || \illuminate\Support\Facades\Auth::user()->isCreator())
+                        <td>
+                            <div class="col">
+                                <form action="{{route('event.edit', $event)}}" method="GET">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary">Edit</button>
+                                </form>
+                            </div>
+                            <div class="col">
+                                <form action="{{route('event.destroy', $event)}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                </form>
+                            </div>
+                        </td>
+                    @endif
                 @endauth
             </tr>
             @endforeach

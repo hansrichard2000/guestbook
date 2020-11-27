@@ -47,11 +47,17 @@ class EventController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Event  $event
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
      */
     public function show(Event $event)
     {
-        //
+        $events = Event::where('id', $event->id)->first();
+        $users = User::all();
+        if($events == null){
+            abort(404);
+        }
+
+        return view('event.detailEvent', compact('events', 'users',));
     }
 
     /**

@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\AddUserController;
 use App\Http\Controllers\CreatorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\User\MyEventController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\User\GuestController as UUserController;
 use App\Http\Controllers\Auth\ActivationController;
@@ -54,7 +55,8 @@ Route::group([
     'prefix' => 'user',
     'as' => 'user.'
 ], function() {
-    Route::resource('user', UUserController::class);
+    Route::resource('guest', UUserController::class);
+    Route::resource('myevent', MyEventController::class);
 });
 // Route::get('/', [EventController::class, 'index']);
 // Route::get('/add', [EventController::class, 'create'])->name('addevent');
