@@ -57,7 +57,13 @@ class EventController extends Controller
             abort(404);
         }
 
-        return view('event.detailEvent', compact('events', 'users',));
+        $eventss = Event::all()->except($event->id)->pluck('id');
+        $guestList = User::whereNotIn('id', function ($query) use ($eventss) {
+           $query->select('user_id')->from('event_user')
+               ->whereNotIn('event_id', $eventss);
+        })->where('role_id', 3)->get();
+
+        return view('event.detailEvent', compact('events', 'users', 'guestList'));
     }
 
     /**

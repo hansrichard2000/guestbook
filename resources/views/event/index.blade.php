@@ -28,7 +28,7 @@
             @foreach ($events as $event)
             <tr>
                 <td>{{$event->id}}</td>
-                <td><a href="@auth/event/{{$event->id}}@endauth">{{$event->title}}</a></td>
+                <td><a href="@auth{{route('creator.event.show', $event->id)}}@endauth">{{$event->title}}</a></td>
                 <td>{{$event->description}}</td>
                 <td>{{$event->event_date}}</td>
                 <td>{{$event->creator->name}}</td>

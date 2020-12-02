@@ -20,7 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="454972a8-c6a2-4d99-b40f-8d2be7cafcea" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Creator/EventController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Creator/GuestController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_12_01_125354_create_event_user_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/event/addGuest.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/GuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/GuestController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Event.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/event/detailEvent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/detailEvent.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/event/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/guest/eventuser/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/eventuser/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,7 +192,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mansun" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Guest-add_ui_for_roles" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -223,6 +235,12 @@
       <workItem from="1606388991008" duration="5434000" />
       <workItem from="1606436776042" duration="11701000" />
       <workItem from="1606489690070" duration="540000" />
+      <workItem from="1606495057649" duration="680000" />
+      <workItem from="1606625508974" duration="631000" />
+      <workItem from="1606826707393" duration="6369000" />
+      <workItem from="1606881762760" duration="4489000" />
+      <workItem from="1606903003123" duration="798000" />
+      <workItem from="1606913611069" duration="2947000" />
     </task>
     <servers />
   </component>
@@ -253,9 +271,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="570" y="178" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1536.824@0.0.1536.824" timestamp="1606275051143" />
-    <state x="129" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606393141414">
+    <state x="129" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1606914554439">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="129" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824/1920.-77.1366.728@0.0.1536.824" timestamp="1606914554439" />
     <state x="129" y="170" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1536.824@0.0.1536.824" timestamp="1606393141414" />
     <state x="549" y="338" key="#com.jetbrains.php.lang.intentions.PhpImportClassDialog#" timestamp="1606393844662">
       <screen x="0" y="0" width="1536" height="824" />
@@ -265,10 +284,12 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="161" y="325" key="ComposerInitDialogKey/0.0.1536.824@0.0.1536.824" timestamp="1606132094153" />
-    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606489698245">
+    <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1606913624619">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606489698245" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.-77.1366.728@0.0.1536.824" timestamp="1606913624619" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824/1920.0.1366.728@0.0.1536.824" timestamp="1606831488864" />
+    <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1606625542620" />
     <state x="349" y="147" key="IDE.errors.dialog" timestamp="1606135502169">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

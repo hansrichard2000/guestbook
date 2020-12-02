@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\Auth\AddUserController;
 use App\Http\Controllers\CreatorController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\Creator\EventController as CreatorEventController;
+use App\Http\Controllers\Creator\GuestController as CreatorGuestController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\User\MyEventController;
 use App\Http\Controllers\UserController;
@@ -24,10 +26,11 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::get('/', function(){
-    return redirect()->route('event.index');
+    return redirect()->route('guest.index');
 });
 Route::get('activate', [ActivationController::class, 'activate'])->name('activate');
 
+Route::resource('guest', UUserController::class);
 Route::resource('event', EventController::class);
 //Route::resource('user', UserController::class);
 Route::group([
@@ -47,7 +50,8 @@ Route::group([
      'prefix' => 'creator',
      'as' => 'creator.',
  ], function() {
-     Route::resource('event', EventController::class);
+     Route::resource('event', CreatorEventController::class);
+     Route::resource('guest', CreatorGuestController::class);
  });
 
 Route::group([

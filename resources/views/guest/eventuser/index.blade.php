@@ -15,6 +15,7 @@
                         <li>{{$event->event_date}}</li>
                         <li>{{$event->creator->name}}</li>
                         <br>
+                        @auth
                         <li>
                             <form method="" action="">
                                 <button class="btn btn-primary">
@@ -22,6 +23,7 @@
                                 </button>
                             </form>
                         </li>
+                        @endauth
                     </ul>
                 </div>
             </div>
