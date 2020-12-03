@@ -25,7 +25,7 @@
             <button type="button" class="btn btn-dark btn-circle float-right" title="Add guest to this event"
                     data-toggle="modal"
                     data-target="#addGuest">Tambah</button>
-            @include('event.addGuest')
+            @include('admin.event.addGuest')
         </div>
     </div>
     <hr>
@@ -67,7 +67,7 @@
                             <div class="row no-gutters">
                                 @if($guest->pivot->is_approved == 0)
                                     <div class="col-md-6">
-                                        <form action="{{route('creator.guest.approve', $guest->id)}}"
+                                        <form action="{{route('admin.guest.approve', $guest->id)}}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             <input name="event_id" type="hidden" value="{{$event->id}}">
@@ -75,7 +75,7 @@
                                         </form>
                                     </div>
                                     <div class="col-md-6">
-                                        <form action="{{route('creator.guest.decline', $guest->id)}}"
+                                        <form action="{{route('admin.guest.decline', $guest->id)}}"
                                               method="POST">
                                             {{ csrf_field() }}
                                             <input name="event_id" type="hidden" value="{{$event->id}}">

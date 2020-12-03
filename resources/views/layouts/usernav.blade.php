@@ -36,9 +36,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <a class="nav-link" href="/user/guest">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{route('user.guest.index')}}">Home <span class="sr-only">(current)</span></a>
 
-                    <a class="nav-link" href="/user/myevent">My Event</a>
+                    <a class="nav-link" href="{{route('user.myevent.index')}}">My Event</a>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

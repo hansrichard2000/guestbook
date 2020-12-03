@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -17,7 +18,7 @@ class EventController extends Controller
     public function index()
     {
         $events = Event::all();
-        return view('event.index', compact('events'));
+        return view('admin.event.index', compact('events'));
     }
 
     /**
@@ -28,7 +29,7 @@ class EventController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('event.addEvent', compact('users'));
+        return view('admin.event.addEvent', compact('users'));
     }
 
     /**
@@ -40,7 +41,7 @@ class EventController extends Controller
     public function store(Request $request)
     {
         Event::create($request->all());
-        return redirect()->route('event.index');
+        return redirect()->route('admin.event.index');
     }
 
     /**
@@ -51,7 +52,15 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+
+        $events = Event::all()->except($id)->pluck('id');
+        $guestList = User::whereNotIn('id', function ($query) use ($events) {
+            $query->select('user_id')->from('event_user')
+                ->whereNotIn('event_id', $events);
+        })->where('role_id', 3)->get();
+
+        return view('admin.event.detailEvent', compact( 'event', 'guestList'));
     }
 
     /**
@@ -62,7 +71,7 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        return view('event.editEvent', compact('event'));
+        return view('admin.event.editEvent', compact('event'));
     }
 
     /**
@@ -72,10 +81,10 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $event)
+    public function update(Request $request, Event $event)
     {
         $event->update($request->all());
-        return redirect()->route('event.index');
+        return redirect()->route('admin.event.index');
     }
 
     /**
@@ -84,7 +93,7 @@ class EventController extends Controller
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy($event)
+    public function destroy(Event $event)
     {
         $event->delete();
         return redirect()->back();

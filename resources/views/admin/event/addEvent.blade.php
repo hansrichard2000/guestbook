@@ -6,7 +6,7 @@
 
 @section('isi')
 <h2>Masukkan Data</h2>
-<form action="{{route('creator.event.store')}}" method="POST">
+<form action="{{route('admin.event.store')}}" method="POST">
     @csrf
     <div class="form-group">
         <label for="title">Title :</label>

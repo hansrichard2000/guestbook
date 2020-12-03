@@ -1,12 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Creator;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
-class GuestController extends Controller
+class CreatorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +18,10 @@ class GuestController extends Controller
      */
     public function index()
     {
-        //
+        $pages = 'user';
+        $users = User::all();
+        $events = Event::all();
+        return view('user.creator.index', compact('pages', 'users', 'events'));
     }
 
     /**
@@ -25,21 +31,33 @@ class GuestController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        $user = User::findOrFail($request->user_id);
-        $attend = $user->attends()->syncWithoutDetaching($request->event_id, ['is_approved' => '0']);
-        return empty($attend) ? redirect()->back()->with('Fail', 'Failed to add new guest')
-            : redirect()->back()->with('Success', 'Guest Added');
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role_id' => $request->role_id,
+            'is_verified' => '1',
+            'is_active' => '1',
+        ]);
+
+        return redirect()->route('admin.event.index');
     }
 
     /**
@@ -85,27 +103,5 @@ class GuestController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function approve($id, Request $request) {
-        $user = User::findOrFail($id);
-        $event = $user->attends->where('id', '=', $request->event_id)->first();
-        $event->pivot->update([
-           'is_approved' => '1',
-        ]);
-
-        return empty($event) ? redirect()->back()->with('Fail', 'Failed to update status')
-            : redirect()->back()->with('Success', 'Success guest: #('.$user->name.') approved');
-    }
-
-    public function decline($id, Request $request){
-        $user = User::findOrFail($id);
-        $event = $user->attends->where('id', '=', $request->event_id)->first();
-        $event->pivot->update([
-            'is_approved' => '2',
-        ]);
-
-        return empty($event) ? redirect()->back()->with('Fail', 'Failed to update status')
-            : redirect()->back()->with('Success', 'Success guest: #('.$user->name.') approved');
     }
 }

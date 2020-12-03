@@ -36,7 +36,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <a class="nav-link" href="/event">Event List <span class="sr-only">(current)</span></a>
+                        @auth
+                            @if(\illuminate\Support\Facades\Auth::user()->isAdmin())
+                                <a class="nav-link" href="{{route('admin.event.index')}}">Event List <span class="sr-only">(current)</span></a>
+                            @elseif(\illuminate\Support\Facades\Auth::user()->isCreator())
+                                <a class="nav-link" href="{{route('creator.event.index')}}">Event List <span class="sr-only">(current)</span></a>
+                            @endif
+                        @endauth
                         @auth
                             @if (\illuminate\Support\Facades\Auth::user()->isAdmin())
                                 <div class="btn-group">

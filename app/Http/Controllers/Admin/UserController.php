@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Event;
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
-class CreatorController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,8 +17,7 @@ class CreatorController extends Controller
     {
         $pages = 'user';
         $users = User::all();
-        $events = Event::all();
-        return view('user.creator.index', compact('pages', 'users', 'events'));
+        return view('user.index', compact('pages', 'users'));
     }
 
     /**
@@ -37,26 +34,11 @@ class CreatorController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role_id' => $request->role_id,
-            'is_verified' => '1',
-            'is_active' => '1',
-        ]);
-
-        return redirect()->route('admin.event.index');
+        //
     }
 
     /**

@@ -28,7 +28,8 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view('event.addEvent', compact('users'));
     }
 
     /**
@@ -39,22 +40,10 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateData($request);
-        $data = $request->all();
-        $data['created_by'] = Auth::id();
-        $event = Event::create($data);
-        return empty($event) ? redirect()->back()->with('Fail', 'Failed to create event')
-            : redirect()->back()->with('Success', 'Created new event ' . $request->title);
+        Event::create($request->all());
+        return redirect()->route('event.index');
     }
 
-    private function validateData($request)
-    {
-        return $request->validate([
-            'title' => 'required',
-            'description' => 'required',
-            'event_date' => 'required',
-        ]);
-    }
 
     /**
      * Display the specified resource.
@@ -84,7 +73,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('event.editEvent', compact('event'));
     }
 
     /**
@@ -94,11 +83,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Event $event)
     {
-//        $event = Event::findOrFail($id);
-//        $event->update($request->all());
-//        return redirect()->back()->with('Success', 'Event #' . $id . '-' . $event->title . ' Updated');
+        $event->update($request->all());
+        return redirect()->route('event.index');
     }
 
     /**
@@ -107,11 +95,9 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Event $event)
     {
-//        $event = Event::findOrFail($id);
-//        $title = $event->title;
-//        $event->delete();
-//        return redirect()->back()->with('Success', 'Deleted Event #' . $id . '-' . $title);
+        $event->delete();
+        return redirect()->back();
     }
 }

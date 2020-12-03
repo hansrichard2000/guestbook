@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MyEventController extends Controller
 {
@@ -15,8 +16,9 @@ class MyEventController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
-        return view('guest.myevent.index', compact('events'));
+        $attends = Auth::user()->attends;
+        $events = Event::doesntHave('guests')->get();
+        return view('guest.myevent.index', compact('attends','events'));
     }
 
     /**
@@ -37,7 +39,16 @@ class MyEventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validateData($request);
+        $attend = Auth::user()->attends()->syncWithoutDetaching($request->event_id, ['is_approved' => '0']);
+        return empty($attend) ? redirect()->back()->with('Fail', 'Failed to submit request')
+            : redirect()->back()->with('Success', 'Reuest Submitted');
+    }
+
+    private function validateData(Request $request){
+        return $request->validate([
+           'event_id' => 'required',
+        ]);
     }
 
     /**
@@ -82,6 +93,7 @@ class MyEventController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Auth::user()->attends()->detach($id);
+        return redirect()->back()->with('Success', 'Request #('.$id.') Cancelled');
     }
 }
