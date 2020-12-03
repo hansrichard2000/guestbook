@@ -20,28 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="454972a8-c6a2-4d99-b40f-8d2be7cafcea" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GuestController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/event/addEvent.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/event/addGuest.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/event/detailEvent.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/event/editEvent.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/event/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/myevent/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/guest/myevent/showDesc.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Creator/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Creator/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Creator/GuestController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Creator/GuestController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/CreatorController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/CreatorController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/User/MyEventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/User/MyEventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/addEvent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/addEvent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/detailEvent.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/detailEvent.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/event/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/guest/myevent/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/guest/myevent/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/usernav.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/usernav.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -254,7 +233,7 @@
       <workItem from="1606881762760" duration="4489000" />
       <workItem from="1606903003123" duration="798000" />
       <workItem from="1606913611069" duration="3284000" />
-      <workItem from="1606965508677" duration="10565000" />
+      <workItem from="1606965508677" duration="11218000" />
     </task>
     <servers />
   </component>
